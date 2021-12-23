@@ -33,15 +33,26 @@ totalPlannedHours = () => {
   // calculate total planned hours
   let idealPlannedHours = 0;
   for (i = 0; i < userSchedule.length; i++) {
-      idealPlannedHours = idealPlannedHours + userSchedule[i].idealHours
+    idealPlannedHours = idealPlannedHours + userSchedule[i].idealHours;
   }
-  console.log(idealPlannedHours )
+  console.log(`Total planned hours this week: ${idealPlannedHours}`);
   return idealPlannedHours;
 };
 totalPlannedHours();
 
 calcSleepDebt = (planned, actual) => {
-console.log(actual - planned)
-}
+  const sleepDebt = planned - actual;
+  console.log(`Your sleep total this week: ${actual}`)
+  if (planned === actual) {
+    console.log("Congrats!! You hit your target sleep hours!");
+  } else if (planned > actual) {
+    console.log(
+      `Uh-oh.. It looks like you've lost ${sleepDebt} hours of sleep!`
+    );
+  } else if (actual > planned) {
+    const bankedHours = actual - planned;
+    console.log(`Whoa, you banked ${bankedHours} hours!!`);
+  }
+};
 
-calcSleepDebt()
+calcSleepDebt(55, 45);
